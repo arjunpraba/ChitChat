@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>ChitChat | Register</title>
+
+    <!-- Required for mobile responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #43cea2, #185a9d);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        .register-card {
+            width: 100%;
+            max-width: 450px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+        .register-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .register-header h2 {
+            margin: 0;
+            color: #333;
+            font-size: 26px;
+        }
+
+        .register-header span {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .field {
+            margin-bottom: 16px;
+        }
+
+        .footer-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .footer-buttons .ui-button {
+            flex: 1;
+        }
+
+        /* Tablet */
+        @media (max-width: 768px) {
+            .register-card {
+                padding: 25px;
+            }
+
+            .register-header h2 {
+                font-size: 24px;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 480px) {
+            .register-card {
+                padding: 20px;
+            }
+
+            .register-header h2 {
+                font-size: 22px;
+            }
+
+            .footer-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</h:head>
+
+<h:body>
+
+<h:form id="registerForm">
+
+    <p:card styleClass="register-card">
+
+        <f:facet name="title">
+            <div class="register-header">
+                <h2>Create Account</h2>
+                <span>Join ChitChat and start chatting</span>
+            </div>
+        </f:facet>
+
+        <div class="field">
+            <p:outputLabel for="username" value="Username"/>
+            <p:inputText id="username"
+                         value="#{userBean.username}"
+                         required="true"
+                         placeholder="Choose a username"
+                         style="width:100%"/>
+        </div>
+
+        <div class="field">
+            <p:outputLabel for="password" value="Password"/>
+            <p:password id="password"
+                        value="#{userBean.password}"
+                        required="true"
+                        placeholder="Create a password"
+                        feedback="true"
+                        style="width:100%"/>
+        </div>
+
+        <div class="field">
+            <p:outputLabel for="firstName" value="First Name"/>
+            <p:inputText id="firstName"
+                         value="#{userBean.firstName}"
+                         required="true"
+                         placeholder="Your first name"
+                         style="width:100%"/>
+        </div>
+
+        <div class="field">
+            <p:outputLabel for="lastName" value="Last Name"/>
+            <p:inputText id="lastName"
+                         value="#{userBean.lastName}"
+                         required="true"
+                         placeholder="Your last name"
+                         style="width:100%"/>
+        </div>
+
+        <div class="field">
+            <p:outputLabel for="email" value="Email"/>
+            <p:inputText id="email"
+                         value="#{userBean.email}"
+                         required="true"
+                         placeholder="example@email.com"
+                         style="width:100%"/>
+        </div>
+
+        <div class="field">
+            <p:outputLabel for="mobile" value="Mobile Number"/>
+            <p:inputText id="mobile"
+                         value="#{userBean.mobileNumber}"
+                         required="true"
+                         placeholder="10-digit mobile number"
+                         style="width:100%"/>
+        </div>
+
+        <p:messages closable="true" showDetail="false"/>
+
+        <div class="footer-buttons">
+            <p:commandButton value="Register"
+                             icon="pi pi-check"
+                             action="#{userBean.register}"
+                             styleClass="ui-button-success"
+                             update="registerForm"/>
+
+            <p:commandButton value="Back to Login"
+                             icon="pi pi-arrow-left"
+                             type="button"
+                             styleClass="ui-button-secondary"
+                             onclick="window.location='login.xhtml'"/>
+        </div>
+
+    </p:card>
+
+</h:form>
+
+</h:body>
+</html>
