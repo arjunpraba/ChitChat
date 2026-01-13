@@ -26,8 +26,9 @@
                   value="org.postgresql.Driver"/>
 
         <!-- INTERNAL Render hostname -->
-        <property name="url"
-                  value="jdbc:postgresql://dpg-d5j1dfvfte5s73d48l2g-a:5432/chitchat_wer0"/>
+<property name="url"
+          value="jdbc:postgresql://dpg-d5j1dfvfte5s73d48l2g-a:5432/chitchat_wer0"/>
+
 
         <property name="username" value="master"/>
         <property name="password" value="8PS9pfYmSspz0jxlXv8DrvxLgTLuigoJ"/>
