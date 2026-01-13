@@ -10,7 +10,7 @@ FROM tomcat:10.1-jdk17
 
 RUN rm -rf /usr/local/tomcat/webapps/*
 
-COPY --from=build /app/HIWeb/target/HIWeb-0.0.1-SNAPSHOT.war \
+COPY --from=build /app/ChatWeb/target/ChatWeb-0.0.1-SNAPSHOT.war \
     /usr/local/tomcat/webapps/ROOT.war
 
 EXPOSE 8080
