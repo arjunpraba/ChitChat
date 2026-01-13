@@ -17,7 +17,7 @@
     <context:component-scan base-package="com.botree"/>
 
     <!-- ============================= -->
-    <!-- DATASOURCE : MYSQL -->
+    <!-- DATASOURCE : POSTGRESQL -->
     <!-- ============================= -->
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -25,10 +25,9 @@
         <property name="driverClassName"
                   value="org.postgresql.Driver"/>
 
-        <!-- IMPORTANT:
-             JDBC URL must NOT contain username/password -->
+        <!-- INTERNAL Render hostname -->
         <property name="url"
-                  value="jdbc:postgresql://dpg-d5j1dfvfte5s73d48l2g-a.verginia-postgres.render.com:5432/chitchat_wer0?sslmode=require"/>
+                  value="jdbc:postgresql://dpg-d5j1dfvfte5s73d48l2g-a:5432/chitchat_wer0"/>
 
         <property name="username" value="master"/>
         <property name="password" value="8PS9pfYmSspz0jxlXv8DrvxLgTLuigoJ"/>
@@ -43,7 +42,6 @@
 
         <property name="dataSource" ref="dataSource"/>
 
-        <!-- Entity Packages -->
         <property name="packagesToScan">
             <list>
                 <value>com.botree.model</value>
@@ -52,14 +50,15 @@
 
         <property name="hibernateProperties">
             <props>
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</prop>
+                <!-- CORRECT DIALECT -->
+                <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.format_sql">true</prop>
                 <prop key="hibernate.current_session_context_class">thread</prop>
             </props>
         </property>
-
 
     </bean>
 
@@ -71,9 +70,9 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <!-- Enable @Transactional -->
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
 </beans>
+
 
 
